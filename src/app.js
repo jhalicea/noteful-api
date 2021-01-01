@@ -12,7 +12,7 @@ const notesRouter = require('./notes/notes-router');
 const app = express();
 
 const morganOption = (NODE_ENV === 'production')
-  ? 'tiny'
+  ? 'common' //tiny
   : 'common';
 
 app.use(morgan(morganOption));
