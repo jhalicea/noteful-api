@@ -11,9 +11,9 @@ const jsonParser = express.json();
 const serializeNote = note => ({
   id: note.id,
   name: xss(note.name),
-  modified: note.modified,
   content: xss(note.content),
   folderId: note.folderId,
+  modified: note.modified,
 });
 
 notesRouter
@@ -69,12 +69,13 @@ notesRouter
       .catch(next);
   })
   .get((req, res, next) => {
-    res.json({
-      id: res.note.id,
-      name: xss(res.note.name),
-      modified: xss(res.note.modified),
-      content: xss(res.note.content),
-    });
+    // res.json({
+    //   id: res.note.id,
+    //   name: xss(res.note.name),
+    //   modified: xss(res.note.modified),
+    //   content: xss(res.note.content),
+    // });
+    res.json(serializeNote(res.note));
   })
   .delete((req, res, next) => {
     NotesService.deleteNote(
