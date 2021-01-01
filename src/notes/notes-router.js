@@ -69,13 +69,12 @@ notesRouter
       .catch(next);
   })
   .get((req, res, next) => {
-    // res.json({
-    //   id: res.note.id,
-    //   name: xss(res.note.name),
-    //   modified: xss(res.note.modified),
-    //   content: xss(res.note.content),
-    // });
-    res.json(serializeNote(res.note));
+    res.json({
+      id: res.note.id,
+      name: xss(res.note.name),
+      modified: xss(res.note.modified),
+      content: xss(res.note.content),
+    });
   })
   .delete((req, res, next) => {
     NotesService.deleteNote(

@@ -14,7 +14,11 @@ const NotesService = {
       });
   },
   getById(knex, id) {
-    return knex.from('noteful_notes').select('*').where({id}).first();
+    return knex
+      .from('noteful_notes')
+      .select('*')
+      .where({ id })
+      .first();
   },
   deleteNote(knex, id) {
     return knex('noteful_notes')
